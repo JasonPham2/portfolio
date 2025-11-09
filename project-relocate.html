@@ -15,13 +15,27 @@
         body {
             background: #0a0e1a;
             color: #e2e8f0;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            scroll-padding-top: 90px;
+        }
+
+        nav,
+        section,
+        footer {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         .case-study-hero {
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 50%, #050a14 100%);
+            background-image: linear-gradient(135deg, rgba(5, 10, 20, 0.92) 0%, rgba(15, 15, 15, 0.88) 50%, rgba(5, 10, 20, 0.92) 100%), url('assets/images/relocate/relocate-hero.png');
+            background-size: cover, cover;
+            background-position: center, center;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem 6rem;
+            padding: 9rem 2rem 6rem;
+            margin-bottom: 4rem;
         }
 
         .case-study-hero::before {
@@ -36,10 +50,21 @@
             pointer-events: none;
         }
 
-        .hero-content,
-        .hero-image {
+        .hero-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
+            align-items: flex-start;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .project-eyebrow {
@@ -59,72 +84,134 @@
             text-shadow: 0 2px 30px rgba(59, 130, 246, 0.4);
         }
 
-        .project-subtitle {
-            font-size: 1.25rem;
+        .hero-lede {
+            font-size: 1.4rem;
             color: #cbd5e1;
-            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 640px;
+        }
+
+        .hero-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.75rem;
+            width: 100%;
+        }
+
+        .hero-metric {
+            padding: 1.75rem;
+            background: rgba(15, 23, 42, 0.68);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(59, 130, 246, 0.28);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.42);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .hero-metric:hover {
+            background: rgba(15, 23, 42, 0.92);
+            border-color: rgba(59, 130, 246, 0.55);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 44px rgba(59, 130, 246, 0.35);
+        }
+
+        .metric-icon {
+            font-size: 2rem;
+            line-height: 1;
+            color: #93c5fd;
+        }
+
+        .metric-label {
+            display: block;
+            color: #60a5fa;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .metric-value {
+            color: #ffffff;
+            font-size: 1.55rem;
+            font-weight: 600;
+        }
+
+        .metric-note {
+            color: #e2e8f0;
+            font-size: 0.98rem;
             line-height: 1.6;
         }
 
-        .project-meta-grid {
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-actions a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #ffffff;
+            font-weight: 600;
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-actions a:hover {
+            background: rgba(59, 130, 246, 0.35);
+            border-color: rgba(96, 165, 250, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .hero-meta-list {
+            list-style: none;
+            margin: 0;
+            padding: 1.75rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .meta-item {
-            padding: 1.5rem;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .meta-item:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .meta-item strong {
-            display: block;
-            color: #60a5fa;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .meta-item span {
-            color: #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .hero-image img {
-            width: 100%;
+            gap: 1.1rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.28);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(59, 130, 246, 0.3);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            margin-top: 3rem;
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
         }
 
-        .hero-image img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 100px rgba(59, 130, 246, 0.5);
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
         }
 
-        .hero-summary {
-            max-width: 900px;
-            margin: 3rem auto 0;
-            text-align: center;
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            line-height: 1.8;
+        .meta-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+        .meta-value {
+            color: #e2e8f0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hero-visual {
+            display: none;
+        }
+
+        .hero-note {
+            font-size: 0.85rem;
+            color: rgba(191, 219, 254, 0.85);
+            margin-top: 0.5rem;
+            line-height: 1.5;
         }
 
         .section {
@@ -186,6 +273,195 @@
 
         .section-note strong {
             color: #60a5fa;
+        }
+
+        .snapshot-section {
+            position: relative;
+            padding: 5rem 2rem 5.5rem;
+            background: linear-gradient(180deg, #071425 0%, #0a1d36 100%);
+            scroll-margin-top: 140px;
+            overflow: visible;
+        }
+
+        .snapshot-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .snapshot-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .snapshot-badge {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.18);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #bfdbfe;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .snapshot-heading h2 {
+            font-size: 2.35rem;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .snapshot-heading p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 760px;
+            line-height: 1.7;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .snapshot-card {
+            padding: 2.5rem;
+            background: rgba(15, 23, 42, 0.72);
+            border: 1px solid rgba(59, 130, 246, 0.38);
+            border-radius: 20px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+        }
+
+        .snapshot-card h3 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+        }
+
+        .snapshot-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .snapshot-card li {
+            color: #d8e4f6;
+            font-size: 1rem;
+            line-height: 1.65;
+            position: relative;
+            padding-left: 1.85rem;
+        }
+
+        .snapshot-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0.6rem;
+            color: #7db2ff;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .snapshot-points {
+            display: grid;
+            gap: 1.15rem;
+        }
+
+        .snapshot-point {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.25rem 1.35rem;
+            background: rgba(16, 33, 56, 0.7);
+            border: 1px solid rgba(125, 178, 255, 0.42);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(6, 14, 26, 0.5);
+        }
+
+        .snapshot-point-icon {
+            width: 42px;
+            height: 42px;
+            font-size: 1.2rem;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(125, 178, 255, 0.34), rgba(59, 130, 246, 0.1));
+            color: #d0e2ff;
+            border: 1px solid rgba(125, 178, 255, 0.5);
+        }
+
+        .snapshot-point-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .snapshot-point-content h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: #f5f9ff;
+        }
+
+        .snapshot-point-content p {
+            margin: 0;
+            color: #d8e4f6;
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        .step-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.42);
+            color: #93c5fd;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .step-content strong {
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .step-content span {
+            color: #cbd5e1;
+            font-size: 0.96rem;
+            line-height: 1.7;
         }
 
         .features-grid,
@@ -354,7 +630,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             transition: border-color 0.3s ease;
+            position: relative;
+        }
+
+        .accordion-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion-item summary::after {
+            content: '+';
+            font-size: 1.2rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(96, 165, 250, 0.45);
+            background: rgba(96, 165, 250, 0.12);
+            color: #93c5fd;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .accordion-item[open] > summary::after {
+            content: '–';
+            background: rgba(96, 165, 250, 0.22);
+            border-color: rgba(96, 165, 250, 0.65);
         }
 
         .accordion-title {
@@ -366,6 +671,22 @@
         .accordion-meta {
             color: #60a5fa;
             font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .accordion-item summary {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.35rem;
+            }
+
+            .accordion-item summary::after {
+                margin-left: 0;
+            }
+
+            .accordion-meta {
+                font-size: 0.85rem;
+            }
         }
 
         .accordion-body {
@@ -608,6 +929,7 @@
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
             position: relative;
+            z-index: 2;
         }
 
         .nav-projects {
@@ -781,11 +1103,52 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                scroll-snap-type: none;
+            }
+
+            .case-study-hero {
+                padding: 7rem 1.5rem 8rem;
+                margin-top: 5rem;
+                overflow: visible;
+                min-height: auto;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .snapshot-inner {
+                gap: 2rem;
+            }
+
+            .snapshot-heading h2 {
+                font-size: 1.9rem;
+            }
+
+            .snapshot-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .snapshot-card {
+                padding: 2rem;
+            }
+
             .project-title {
                 font-size: 2rem;
             }
 
-            .project-subtitle {
+            .hero-lede {
                 font-size: 1rem;
             }
 
@@ -807,10 +1170,6 @@
 
             .reflection-cards {
                 grid-template-columns: 1fr;
-            }
-
-            .hero-summary {
-                font-size: 1rem;
             }
 
             .project-meta-grid {
@@ -840,10 +1199,6 @@
 
             .artifact-gallery figure {
                 margin: 0;
-            }
-
-            .artifact-item > img {
-                max-width: 100%;
             }
         }
 
@@ -877,6 +1232,97 @@
         .user-lesson-card p {
             color: #cbd5e1;
             line-height: 1.6;
+        }
+
+        .snapshot-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .snapshot-step {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1.6rem;
+            background: rgba(18, 32, 55, 0.82);
+            border: 1px solid rgba(125, 178, 255, 0.5);
+            border-radius: 18px;
+            box-shadow: 0 14px 36px rgba(8, 16, 30, 0.5);
+            overflow: hidden;
+        }
+
+        .snapshot-step::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(96, 165, 250, 0.75), rgba(14, 165, 233, 0.45));
+        }
+
+        .snapshot-step-icon {
+            align-self: flex-start;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(125, 178, 255, 0.35), rgba(59, 130, 246, 0.16));
+            border: 1px solid rgba(125, 178, 255, 0.55);
+            color: #dce7ff;
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snapshot-step-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snapshot-step-body h4 {
+            margin: 0;
+            font-size: 1.08rem;
+            color: #f5f9ff;
+        }
+
+        .snapshot-step-body p {
+            margin: 0;
+            color: #d8e4f6;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        @media (max-width: 768px) {
+            .snapshot-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .snapshot-step {
+                padding: 1.4rem;
+            }
+
+            .snapshot-step-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .snapshot-step-body h4 {
+                font-size: 1.02rem;
+            }
+
+            .snapshot-step-body p {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -917,34 +1363,143 @@
         </div>
     </nav>
 
-    <section class="hero case-study-hero">
-        <div class="hero-content">
-            <p class="project-eyebrow">GBDA210 · September to November 2024</p>
-            <h1 class="project-title">Relocate: Simplifying Local Recreation</h1>
-            <p class="project-subtitle">Transforming a confusing recreation booking process into a seamless, user-friendly experience.</p>
-            <div class="project-meta-grid">
-                <div class="meta-item">
-                    <strong>Timeline</strong>
-                    <span>September to November 2024</span>
+    <section class="case-study-hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="project-eyebrow">GBDA210 · September to November 2024</p>
+                <h1 class="project-title">Relocate: making community recreation easy to find and book</h1>
+                <p class="hero-lede">Our city portal buried the information people needed to stay active. I led research, strategy, and product design to overhaul the experience so families, athletes, and newcomers could plan with confidence.</p>
+
+                <div class="hero-metrics-grid">
+                    <div class="hero-metric">
+                        <span class="metric-icon">📊</span>
+                        <span class="metric-label">Opportunity signal</span>
+                        <span class="metric-value">42% wanted drop-ins</span>
+                        <p class="metric-note">Residents told us they'll show up when we spell out gear, cost, and commitment up front. They want clear info instead of mystery PDFs.</p>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="metric-icon">⚠️</span>
+                        <span class="metric-label">Problem severity</span>
+                        <span class="metric-value">62% abandon rate</span>
+                        <p class="metric-note">Analytics confirmed most visitors bailed before picking a slot because schedules hid behind downloadable files.</p>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="metric-icon">🧪</span>
+                        <span class="metric-label">Evidence</span>
+                        <span class="metric-value">5 moderated sessions</span>
+                        <p class="metric-note">Testing shaped a booking flow with live availability, maintenance alerts, and filters that actually surface accessible options.</p>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <strong>Team</strong>
-                    <span>1 PM · 2 Researchers · 3 Designers</span>
+
+                <div class="hero-actions">
+                    <a href="https://www.figma.com/proto/lkE5bh37HtcuFfzTDGtYZo/Milestones?node-id=564-7535&viewport=4821%2C1430%2C0.47&t=zOvQ3z3UyxL9Eypr-0&scaling=contain&content-scaling=fixed&starting-point-node-id=564%3A7535" target="_blank" rel="noopener">View clickable prototype ↗</a>
+                    <a href="#snapshot">Jump to snapshot ↓</a>
                 </div>
-                <div class="meta-item">
-                    <strong>Role</strong>
-                    <span>Project Manager · UX Researcher · UX/UI Designer</span>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-visual-frame">
+                    <img src="assets/images/relocate/relocate-hero.png" alt="Relocate recreation platform mockups showing booking and facility updates">
                 </div>
-                <div class="meta-item">
-                    <strong>Tools</strong>
-                    <span>Figma</span>
+                <ul class="hero-meta-list">
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Project manager, UX researcher, and product designer</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Team</span>
+                        <span class="meta-value">1 PM, 2 researchers, and 3 designers partnering with municipal staff</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Contributions</span>
+                        <span class="meta-value">Research ops, insight synthesis, interaction design, content strategy, usability testing</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Tools</span>
+                        <span class="meta-value">Figma, Maze, Notion, FigJam</span>
+                    </li>
+                </ul>
+                <p class="hero-note">Delivered over a ten-week academic sprint with weekly stakeholder playbacks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="snapshot-section" id="snapshot">
+        <div class="snapshot-inner">
+            <div class="snapshot-heading">
+                <span class="snapshot-badge">Quick read</span>
+                <h2>Community Recreation Overview</h2>
+                <p>Relocate re-centers municipal recreation around real people. We tackled outdated content, inaccessible booking, and poor facility communication to create a platform that feels current, human, and trustworthy.</p>
+            </div>
+            <div class="snapshot-grid">
+                <div class="snapshot-card">
+                    <h3>🏙️ What residents face</h3>
+                    <div class="snapshot-points">
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">👪</span>
+                            <div class="snapshot-point-content">
+                                <h4>Who's looking</h4>
+                                <p>Families, rec players, and newcomers trying to stay active without decoding city jargon.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">🗂️</span>
+                            <div class="snapshot-point-content">
+                                <h4>The mess</h4>
+                                <p>Schedules and rules hid in PDFs and bulletin boards, so gear, accessibility, and openings were guesswork.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">🧭</span>
+                            <div class="snapshot-point-content">
+                                <h4>Our platform</h4>
+                                <p>Smart filters, live maintenance alerts, and clear pricing that make planning feel modern and human.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">📊</span>
+                            <div class="snapshot-point-content">
+                                <h4>The momentum</h4>
+                                <p>A data-backed roadmap, refreshed content strategy, and cross-department buy-in to launch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snapshot-card">
+                    <h3>🧭 How we responded</h3>
+                    <div class="snapshot-steps">
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">1</span>
+                            <div class="snapshot-step-body">
+                                <h4>Listen widely</h4>
+                                <p>Pulled in 50+ survey responses and deep interviews to surface the biggest "I give up" moments.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">2</span>
+                            <div class="snapshot-step-body">
+                                <h4>Map the system</h4>
+                                <p>Audited four municipal portals and showed where communication and accountability fell apart.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">3</span>
+                            <div class="snapshot-step-body">
+                                <h4>Prototype and test</h4>
+                                <p>Ran moderated sessions to tweak booking flows, facility pages, and alert patterns until they felt effortless.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">4</span>
+                            <div class="snapshot-step-body">
+                                <h4>Build the handoff</h4>
+                                <p>Delivered component kits, content playbooks, and measurement plans so the city can actually launch this.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="assets/images/relocate/relocate-hero.png" alt="High-fidelity Relocate experience mockups">
-        </div>
-        <p class="project-intro hero-summary">Recreation keeps communities healthy, yet most local platforms are clunky, vague about facility status, and downright frustrating. I guided Relocate through a five-phase design thinking process, aligning research, design, and usability testing to deliver clarity, accessibility, and confidence at every touchpoint.</p>
     </section>
 
     <section class="section">
@@ -988,7 +1543,7 @@
                     </summary>
                     <div class="accordion-body">
                         <p>Recreation keeps people active, social, and grounded, yet the tools that exist today often swing too far toward either casual drop-ins or competitive leagues. That leaves a lot of people feeling unsupported.</p>
-                        <p>We ran 10+ in-depth interviews and gathered 50+ survey responses across students, parents, and league organizers. Here’s what kept coming up.</p>
+                        <p>We ran 10+ in-depth interviews and gathered 50+ survey responses across students, parents, and league organizers. Here's what kept coming up.</p>
                         <div class="insight-callouts">
                             <div class="insight-callout">
                                 <div class="insight-callout-icon">🧼</div>
@@ -1013,7 +1568,7 @@
                             <div class="insight-callout">
                                 <div class="insight-callout-icon">🤝</div>
                                 <h4>Community friction</h4>
-                                <p>People wanted to find “their” crew, but inconsistent skill levels and unreliable info made connection hard.</p>
+                                <p>People wanted to find "their" crew, but inconsistent skill levels and unreliable info made connection hard.</p>
                             </div>
                             <div class="insight-callout">
                                 <div class="insight-callout-icon">🧾</div>
@@ -1087,17 +1642,17 @@
                 <div class="tab-panels">
                      <div class="tab-panel active" id="quote-athlete" role="tabpanel">
                         <div class="tab-panel-visual single-image">
-                            <img src="assets/images/relocate/Timmy.png" alt="Timmy, the athlete persona for Relocate saying &quot;I drive across town only to find locked doors.&quot;">
+                            <img src="assets/images/relocate/Timmy.png" alt="Timmy, the athlete persona for Relocate saying "I drive across town only to find locked doors."">
                         </div>
                     </div>
                     <div class="tab-panel" id="quote-parent" role="tabpanel" hidden>
                         <div class="tab-panel-visual single-image">
-                            <img src="assets/images/relocate/Lisa.png" alt="Lisa, the parent persona for Relocate saying &quot;Schedules are buried in PDFs. I don't know where to start.&quot;">
+                            <img src="assets/images/relocate/Lisa.png" alt="Lisa, the parent persona for Relocate saying "Schedules are buried in PDFs. I don't know where to start."">
                         </div>
                     </div>
                     <div class="tab-panel" id="quote-newcomer" role="tabpanel" hidden>
                         <div class="tab-panel-visual single-image">
-                            <img src="assets/images/relocate/Peter.png" alt="Peter, the newcomer persona for Relocate saying &quot;I want filters for accessibility, but there's nothing.&quot;">
+                            <img src="assets/images/relocate/Peter.png" alt="Peter, the newcomer persona for Relocate saying "I want filters for accessibility, but there's nothing."">
                         </div>
                     </div>
                 </div>
@@ -1215,7 +1770,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🧭</div>
                     <h3>Guided onboarding</h3>
-                    <p>Goal-setting during signup tailors recommendations to each user’s intent.</p>
+                    <p>Goal-setting during signup tailors recommendations to each user's intent.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
@@ -1313,7 +1868,7 @@
                 <div class="user-lesson-card">
                     <div class="user-lesson-icon">🗂️</div>
                     <h3>Your bookings, clearly</h3>
-                    <p>Testers wondered if the schedule was theirs or a template. A “Your Bookings” title and persistent state solved the ambiguity.</p>
+                    <p>Testers wondered if the schedule was theirs or a template. A "Your Bookings" title and persistent state solved the ambiguity.</p>
                 </div>
                 <div class="user-lesson-card">
                     <div class="user-lesson-icon">🔍</div>
@@ -1414,30 +1969,39 @@
                 rootMargin: '0px 0px -100px 0px'
             };
 
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        // Use requestAnimationFrame for smooth animations
-                        requestAnimationFrame(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            entry.target.classList.add('animated');
-                        });
-                        // Unobserve after animation to improve performance
-                        fadeInObserver.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
+            const animatedSelector = '.feature-card, .pain-point-card, .persona-card, .data-card, .design-screen, .accordion-item, .reflection-card, .artifact-item';
 
-            // Observe fade-in elements with optimized stagger
-            const fadeElements = document.querySelectorAll('.feature-card, .pain-point-card, .persona-card, .data-card, .design-screen, .accordion-item, .reflection-card, .artifact-item');
-            fadeElements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                element.style.willChange = 'opacity, transform';
-                fadeInObserver.observe(element);
-            });
+            if (enableAnimations) {
+                const fadeInObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                            requestAnimationFrame(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                entry.target.classList.add('animated');
+                            });
+                            fadeInObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                const fadeElements = document.querySelectorAll(animatedSelector);
+                fadeElements.forEach((element, index) => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+                    element.style.willChange = 'opacity, transform';
+                    fadeInObserver.observe(element);
+                });
+            } else {
+                document.querySelectorAll(animatedSelector).forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'none';
+                });
+            }
 
             // Tab switcher functionality
             const tabSwitcher = document.querySelector('[data-tab-switcher]');
@@ -1528,24 +2092,31 @@
             // Optimized parallax effect on hero with passive listener
             let ticking = false;
             let lastScroll = 0;
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                // Only update if scroll changed significantly
-                if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
-                    window.requestAnimationFrame(() => {
-                        const hero = document.querySelector('.case-study-hero');
-                        
-                        if (hero && scrolled < window.innerHeight) {
-                            hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.2;
-                        }
-                        
-                        lastScroll = scrolled;
-                        ticking = false;
-                    });
-                    ticking = true;
+            if (!isSmallScreen && !prefersReducedMotion) {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
+                        window.requestAnimationFrame(() => {
+                            const hero = document.querySelector('.case-study-hero');
+                            
+                            if (hero && scrolled < window.innerHeight) {
+                                hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.2;
+                            }
+                            
+                            lastScroll = scrolled;
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+            } else {
+                const hero = document.querySelector('.case-study-hero');
+                if (hero) {
+                    hero.style.transform = 'none';
+                    hero.style.opacity = '1';
                 }
-            }, { passive: true });
+            }
 
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

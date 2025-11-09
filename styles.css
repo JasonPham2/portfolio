@@ -160,6 +160,19 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .case-study-hero {
+        padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 16) !important;
+        margin-top: calc(var(--spacing-unit) * 6);
+        overflow: visible !important;
+        min-height: auto !important;
+    }
+
+    .hero-summary {
+        padding: 0 calc(var(--spacing-unit) * 2) !important;
+    }
+}
+
 .hero-image {
     max-width: var(--max-width);
     margin: calc(var(--spacing-unit) * 6) auto 0;

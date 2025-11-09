@@ -15,13 +15,27 @@
         body {
             background: #0a0e1a;
             color: #e2e8f0;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            scroll-padding-top: 90px;
+        }
+
+        nav,
+        section,
+        footer {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         .case-study-hero {
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 50%, #050a14 100%);
+            background-image: linear-gradient(135deg, rgba(4, 24, 24, 0.94) 0%, rgba(6, 34, 38, 0.9) 50%, rgba(4, 24, 24, 0.94) 100%), url('assets/images/pulse/pulse-hero-mockup.png');
+            background-size: cover, cover;
+            background-position: center, center;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem 6rem;
+            padding: 9rem 2rem 6rem;
+            margin-bottom: 4rem;
         }
 
         .case-study-hero::before {
@@ -31,15 +45,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
-                        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
+            background: radial-gradient(circle at 30% 50%, rgba(45, 212, 191, 0.12) 0%, transparent 60%),
+                        radial-gradient(circle at 70% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
             pointer-events: none;
         }
 
-        .hero-content,
-        .hero-image {
+        .hero-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
+            align-items: flex-start;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .project-eyebrow {
@@ -56,75 +81,156 @@
             line-height: 1.1;
             margin-bottom: 1.5rem;
             color: #ffffff;
-            text-shadow: 0 2px 30px rgba(20, 184, 166, 0.4);
+            text-shadow: 0 2px 30px rgba(13, 148, 136, 0.4);
         }
 
-        .project-subtitle {
-            font-size: 1.25rem;
+        .hero-lede {
+            font-size: 1.4rem;
             color: #cbd5e1;
-            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 640px;
+        }
+
+        .hero-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.75rem;
+            width: 100%;
+        }
+
+        .hero-metric {
+            padding: 1.75rem;
+            background: rgba(9, 35, 40, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(20, 184, 166, 0.38);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.55);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .hero-metric:hover {
+            background: rgba(10, 44, 50, 0.92);
+            border-color: rgba(94, 234, 212, 0.6);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 44px rgba(20, 184, 166, 0.35);
+        }
+
+        .metric-icon {
+            font-size: 2rem;
+            line-height: 1;
+            color: #5eead4;
+        }
+
+        .metric-label {
+            display: block;
+            color: #5eead4;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .metric-value {
+            color: #ffffff;
+            font-size: 1.55rem;
+            font-weight: 600;
+        }
+
+        .metric-note {
+            color: #a5f3fc;
+            font-size: 0.98rem;
             line-height: 1.6;
         }
 
-        .project-meta-grid {
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-actions a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 999px;
+            background: rgba(20, 184, 166, 0.22);
+            color: #ffffff;
+            font-weight: 600;
+            border: 1px solid rgba(94, 234, 212, 0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-actions a:hover {
+            background: rgba(20, 184, 166, 0.35);
+            border-color: rgba(94, 234, 212, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: none;
+        }
+
+        .hero-meta-list {
+            list-style: none;
+            margin: 0;
+            padding: 1.75rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .meta-item {
-            padding: 1.5rem;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .meta-item:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(20, 184, 166, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(20, 184, 166, 0.3);
-        }
-
-        .meta-item strong {
-            display: block;
-            color: #5eead4;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .meta-item span {
-            color: #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .hero-image img {
-            width: 100%;
+            gap: 1.1rem;
+            background: rgba(9, 35, 40, 0.75);
+            border: 1px solid rgba(20, 184, 166, 0.38);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(20, 184, 166, 0.3);
-            border: 1px solid rgba(20, 184, 166, 0.3);
-            margin-top: 3rem;
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
         }
 
-        .hero-image img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 100px rgba(20, 184, 166, 0.5);
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
         }
 
-        .hero-summary {
-            max-width: 900px;
-            margin: 3rem auto 0;
-            text-align: center;
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            line-height: 1.8;
+        .meta-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            color: #5eead4;
+        }
+
+        .meta-value {
+            color: #ccfbf1;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hero-meta-list li {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .hero-meta-list strong {
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #5eead4;
+        }
+
+        .hero-meta-list span {
+            color: #ccfbf1;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .hero-note {
+            font-size: 0.85rem;
+            color: rgba(204, 251, 241, 0.85);
+            margin-top: 0.5rem;
+            line-height: 1.5;
         }
 
         .section {
@@ -188,6 +294,195 @@
             color: #5eead4;
         }
 
+        .snapshot-section {
+            position: relative;
+            padding: 5rem 2rem 5.5rem;
+            background: linear-gradient(180deg, #041118 0%, #062028 100%);
+            scroll-margin-top: 140px;
+            overflow: visible;
+        }
+
+        .snapshot-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .snapshot-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .snapshot-badge {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(20, 184, 166, 0.18);
+            border: 1px solid rgba(20, 184, 166, 0.38);
+            color: #5eead4;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .snapshot-heading h2 {
+            font-size: 2.35rem;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .snapshot-heading p {
+            font-size: 1.1rem;
+            color: #a5f3fc;
+            max-width: 760px;
+            line-height: 1.7;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .snapshot-card {
+            padding: 2.5rem;
+            background: rgba(4, 35, 39, 0.84);
+            border: 1px solid rgba(45, 212, 191, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 16px 42px rgba(2, 18, 22, 0.55);
+        }
+
+        .snapshot-card h3 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+        }
+
+        .snapshot-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .snapshot-card li {
+            color: #d7f4f4;
+            font-size: 1rem;
+            line-height: 1.65;
+            position: relative;
+            padding-left: 1.85rem;
+        }
+
+        .snapshot-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0.6rem;
+            color: #5fe0d5;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .snapshot-points {
+            display: grid;
+            gap: 1.15rem;
+        }
+
+        .snapshot-point {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.25rem 1.35rem;
+            background: rgba(3, 33, 36, 0.72);
+            border: 1px solid rgba(95, 224, 213, 0.42);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(2, 17, 19, 0.55);
+        }
+
+        .snapshot-point-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(95, 224, 213, 0.28), rgba(45, 212, 191, 0.1));
+            color: #bff8f2;
+            font-size: 1.4rem;
+            border: 1px solid rgba(95, 224, 213, 0.5);
+        }
+
+        .snapshot-point-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .snapshot-point-content h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #f6fffe;
+        }
+
+        .snapshot-point-content p {
+            margin: 0;
+            color: #d7f4f4;
+            line-height: 1.65;
+            font-size: 0.98rem;
+        }
+
+        .step-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 184, 166, 0.18);
+            border: 1px solid rgba(20, 184, 166, 0.38);
+            color: #5eead4;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .step-content strong {
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .step-content span {
+            color: #a5f3fc;
+            font-size: 0.96rem;
+            line-height: 1.7;
+        }
+
         /* Challenge Cards - Stacked Layout */
         .challenge-stack {
             display: flex;
@@ -243,11 +538,12 @@
         .research-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .research-block {
+            --spacing-unit: 0.5rem;
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(10px);
             padding: 2.5rem;
@@ -255,6 +551,10 @@
             border: 1px solid rgba(20, 184, 166, 0.2);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 2);
         }
 
         .research-block:hover {
@@ -265,30 +565,30 @@
         }
 
         .research-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.75rem;
+            margin-bottom: 0.4rem;
             display: block;
-            filter: drop-shadow(0 0 20px rgba(94, 234, 212, 0.5));
+            filter: drop-shadow(0 0 18px rgba(94, 234, 212, 0.5));
         }
 
         .research-block h3 {
             color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin: calc(var(--spacing-unit)) 0;
+            font-size: 1.2rem;
         }
 
         .research-block p {
             color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
         }
 
         .research-stat {
             display: block;
             color: #5eead4;
             font-style: italic;
-            margin-top: 1rem;
-            font-size: 0.95rem;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
         }
 
         /* Validation Badge */
@@ -686,6 +986,7 @@
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
             position: relative;
+            z-index: 2;
         }
 
         .nav-projects {
@@ -716,12 +1017,120 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(20, 184, 166, 0.4);
         }
 
+        .snapshot-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .snapshot-step {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1.6rem;
+            background: rgba(4, 28, 33, 0.85);
+            border: 1px solid rgba(45, 212, 191, 0.5);
+            border-radius: 18px;
+            box-shadow: 0 14px 36px rgba(3, 18, 22, 0.55);
+            overflow: hidden;
+        }
+
+        .snapshot-step::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.75), rgba(20, 184, 166, 0.45));
+        }
+
+        .snapshot-step-icon {
+            align-self: flex-start;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.35), rgba(56, 189, 248, 0.15));
+            border: 1px solid rgba(45, 212, 191, 0.55);
+            color: #ccfbf1;
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snapshot-step-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snapshot-step-body h4 {
+            margin: 0;
+            font-size: 1.08rem;
+            color: #f6fffe;
+        }
+
+        .snapshot-step-body p {
+            margin: 0;
+            color: #d7f4f4;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
         @media (max-width: 768px) {
+            body {
+                scroll-snap-type: none;
+            }
+
+            .case-study-hero {
+                padding: 7rem 1.5rem 8rem;
+                margin-top: 5rem;
+                overflow: visible;
+                min-height: auto;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .snapshot-inner {
+                gap: 2rem;
+            }
+
+            .snapshot-heading h2 {
+                font-size: 1.9rem;
+            }
+
+            .snapshot-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .snapshot-card {
+                padding: 2rem;
+            }
+
             .project-title {
                 font-size: 2rem;
             }
 
-            .project-subtitle {
+            .hero-lede {
                 font-size: 1rem;
             }
 
@@ -767,6 +1176,7 @@
 
             .hero-summary {
                 font-size: 1rem;
+                padding: 0 0.5rem;
             }
 
             .project-meta-grid {
@@ -780,6 +1190,24 @@
 
             .challenge-label {
                 min-width: auto;
+            }
+
+            .snapshot-step::before {
+                left: 26px;
+            }
+
+            .snapshot-step-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .snapshot-step-body h4 {
+                font-size: 1.02rem;
+            }
+
+            .snapshot-step-body p {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -821,38 +1249,142 @@
         </div>
     </nav>
 
-    <section class="hero case-study-hero">
-        <div class="hero-content">
-            <p class="project-eyebrow">Academic Capstone · 6 Weeks</p>
-            <h1 class="project-title">Pulse: Reimagining Emergency Triage</h1>
-            <p class="project-subtitle">A self-triage kiosk that bridges patients and providers through clarity, empathy, and intelligent design.</p>
-            <div class="project-meta-grid">
-                <div class="meta-item">
-                    <strong>Role</strong>
-                    <span>Lead Product & Service Designer</span>
+    <section class="case-study-hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="project-eyebrow">Academic Capstone · 6 weeks</p>
+                <h1 class="project-title">Pulse: self-triage that calms emergency room chaos</h1>
+                <p class="hero-lede">I led a four-designer squad to prove how a self-triage kiosk could shorten intake, keep patients informed, and equip nurses with reliable context even on the busiest nights.</p>
+
+                <div class="hero-metrics-grid">
+                    <div class="hero-metric">
+                        <span class="metric-icon">⏱️</span>
+                        <span class="metric-label">Projected impact</span>
+                        <span class="metric-value">127 seconds back</span>
+                        <p class="metric-note">Our time-and-motion modeling showed the kiosk gives nurses back two full minutes per patient. That time lets them check vitals instead of babysitting forms.</p>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="metric-icon">🩺</span>
+                        <span class="metric-label">Clinical confidence</span>
+                        <span class="metric-value">2 clinician reviews</span>
+                        <p class="metric-note">ER nurses and physicians pressure-tested safety checks, escalation paths, and documentation so nothing slips when the waiting room fills up.</p>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="metric-icon">🗺️</span>
+                        <span class="metric-label">Service coverage</span>
+                        <span class="metric-value">3 stakeholder journeys</span>
+                        <p class="metric-note">We mapped patients, triage nurses, and clerks together to close the handoff gaps that usually spark hallway fire drills.</p>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <strong>Duration</strong>
-                    <span>6 Weeks</span>
+
+                <div class="hero-actions">
+                    <a href="https://www.figma.com/proto/rDhhhJYZFhx36mYOtMzHHb/GBDA301-Project?node-id=60-13&viewport=-125%2C108%2C0.1&t=F26k1xNxapY4eI68-0&scaling=contain&content-scaling=fixed&starting-point-node-id=60%3A13" target="_blank" rel="noopener">View clickable prototype ↗</a>
+                    <a href="#snapshot">Jump to snapshot ↓</a>
                 </div>
-                <div class="meta-item">
-                    <strong>Team</strong>
-                    <span>4 Designers</span>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-visual-frame">
+                    <img src="assets/images/pulse/pulse-hero-mockup.png" alt="Pulse emergency triage kiosk mockups">
                 </div>
-                <div class="meta-item">
-                    <strong>Type</strong>
-                    <span>Proof of Concept / UX Research & Prototype</span>
+                <ul class="hero-meta-list">
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Lead product and service designer</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Team</span>
+                        <span class="meta-value">Four designers partnering with healthcare stakeholders</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Contributions</span>
+                        <span class="meta-value">Field research, service blueprinting, interaction design, prototyping, validation facilitation</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Tools</span>
+                        <span class="meta-value">Figma, Miro, Maze, Canva</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="snapshot-section" id="snapshot">
+        <div class="snapshot-inner">
+            <div class="snapshot-heading">
+                <span class="snapshot-badge">Quick read</span>
+                <h2>Emergency Intake Overview</h2>
+                <p>Emergency departments asked for relief at the first touchpoint. Pulse delivers a triage kiosk that respects patient anxiety, speeds up intake, and hands clinicians structured insight without adding overhead.</p>
+            </div>
+            <div class="snapshot-grid">
+                <div class="snapshot-card">
+                    <h3>🚑 Why Pulse matters</h3>
+                    <div class="snapshot-points">
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">🏥</span>
+                            <div class="snapshot-point-content">
+                                <h4>Who we're helping</h4>
+                                <p>Patients in crisis, triage nurses juggling alarms, and clerks racing between screens.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">⌛</span>
+                            <div class="snapshot-point-content">
+                                <h4>The bottleneck</h4>
+                                <p>Paper questionnaires slowed intake and left everyone guessing what came next.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">🖥️</span>
+                            <div class="snapshot-point-content">
+                                <h4>Our answer</h4>
+                                <p>A guided kiosk that gathers symptoms, keeps patients updated, and feeds nurses reliable context.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">✅</span>
+                            <div class="snapshot-point-content">
+                                <h4>The signal</h4>
+                                <p>Two minutes saved per patient and clinicians ready to trial it in a simulated emergency department.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <strong>Tools</strong>
-                    <span>Figma, Miro, Canva</span>
+                <div class="snapshot-card">
+                    <h3>🧪 How we validated</h3>
+                    <div class="snapshot-steps">
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">1</span>
+                            <div class="snapshot-step-body">
+                                <h4>Shadow and quantify</h4>
+                                <p>Walked the floor, timed every handoff, and catalogued stress points across a full shift.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">2</span>
+                            <div class="snapshot-step-body">
+                                <h4>Blueprint the service</h4>
+                                <p>Aligned frontstage and backstage steps so the kiosk, nurses, and clerks all stay in sync.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">3</span>
+                            <div class="snapshot-step-body">
+                                <h4>Prototype to de-risk</h4>
+                                <p>Ran bodystorms, paper flows, and mid-fi tests to pressure test accessibility and fail-safes.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">4</span>
+                            <div class="snapshot-step-body">
+                                <h4>Validate with clinicians</h4>
+                                <p>Reviewed hi-fi journeys with ER staff and tuned safeguards before sharing the rollout plan.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="assets/images/pulse/pulse-hero-mockup.png" alt="Pulse kiosk interface showcase">
-        </div>
-        <p class="hero-summary">Emergency departments run under constant pressure: long waits, chaotic workflows, and anxious patients. Pulse started with a simple question: what if the first touchpoint in an emergency room eased stress instead of adding to it? We designed a self-triage kiosk that standardizes intake, empowers patients with transparency, and gives medical staff the structured data they need to make faster, smarter decisions.</p>
     </section>
 
     <section class="section">
@@ -1025,8 +1557,8 @@
                         <img src="assets/images/pulse/pulse-screen-card-scan.png" alt="Health card scanning interface">
                     </div>
                     <div class="screen-caption">
-                        <h4>Quick Check-In</h4>
-                        <p>Animated card-scan illustration shows exactly where to insert health card, with manual entry always visible as a backup option.</p>
+                        <h4>Welcome & Language</h4>
+                        <p>Large, clear language options with visual icons ensure patients from any background can start their journey confidently.</p>
                     </div>
                 </div>
                 <div class="screen-item">
@@ -1034,8 +1566,8 @@
                         <img src="assets/images/pulse/pulse-screen-language.png" alt="Language selection screen">
                     </div>
                     <div class="screen-caption">
-                        <h4>Welcome & Language</h4>
-                        <p>Large, clear language options with visual icons ensure patients from any background can start their journey confidently.</p>
+                        <h4>Quick Check-In</h4>
+                        <p>Animated card-scan illustration shows exactly where to insert health card, with manual entry always visible as a backup option.</p>
                     </div>
                 </div>
                 <div class="screen-item">
@@ -1189,37 +1721,47 @@
                 rootMargin: '0px 0px -100px 0px'
             };
 
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        requestAnimationFrame(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            entry.target.classList.add('animated');
-                        });
-                        fadeInObserver.unobserve(entry.target);
-                    }
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
+            const animatedSelector = '.challenge-card, .research-block, .feature-block, .result-card, .screen-item, .timeline-item';
+
+            if (enableAnimations) {
+                const fadeInObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                            requestAnimationFrame(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                entry.target.classList.add('animated');
+                            });
+                            fadeInObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                const fadeElements = document.querySelectorAll('.challenge-card, .research-block, .feature-block, .result-card, .screen-item');
+                fadeElements.forEach((element, index) => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+                    element.style.willChange = 'opacity, transform';
+                    fadeInObserver.observe(element);
                 });
-            }, observerOptions);
 
-            // Observe fade-in elements with optimized stagger
-            const fadeElements = document.querySelectorAll('.challenge-card, .research-block, .feature-block, .result-card, .screen-item');
-            fadeElements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                element.style.willChange = 'opacity, transform';
-                fadeInObserver.observe(element);
-            });
-
-            // Separate subtle fade for timeline items
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            timelineItems.forEach((element) => {
-                element.style.opacity = '0';
-                element.style.transition = 'opacity 0.6s ease-out';
-                element.style.willChange = 'opacity';
-                fadeInObserver.observe(element);
-            });
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                timelineItems.forEach((element) => {
+                    element.style.opacity = '0';
+                    element.style.transition = 'opacity 0.6s ease-out';
+                    element.style.willChange = 'opacity';
+                    fadeInObserver.observe(element);
+                });
+            } else {
+                document.querySelectorAll(animatedSelector).forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'none';
+                });
+            }
 
             // Enhanced hover effects for navigation links
             const navLinks = document.querySelectorAll('.nav-projects a');
@@ -1278,23 +1820,32 @@
 
             // Smooth parallax effect on hero
             let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        const scrolled = window.pageYOffset;
-                        const hero = document.querySelector('.case-study-hero');
-                        
-                        if (hero && scrolled < window.innerHeight) {
-                            hero.style.transition = 'transform 0.1s ease-out, opacity 0.1s ease-out';
-                            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.3;
-                        }
-                        
-                        ticking = false;
-                    });
-                    ticking = true;
+            if (!isSmallScreen && !prefersReducedMotion) {
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            const scrolled = window.pageYOffset;
+                            const hero = document.querySelector('.case-study-hero');
+                            
+                            if (hero && scrolled < window.innerHeight) {
+                                hero.style.transition = 'transform 0.1s ease-out, opacity 0.1s ease-out';
+                                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.3;
+                            }
+                            
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+            } else {
+                const hero = document.querySelector('.case-study-hero');
+                if (hero) {
+                    hero.style.transform = 'none';
+                    hero.style.opacity = '1';
+                    hero.style.transition = '';
                 }
-            });
+            }
 
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

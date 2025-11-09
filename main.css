@@ -39,6 +39,25 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+    color: #60a5fa;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgba(96, 165, 250, 0.65);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: #93c5fd;
+    text-decoration-color: rgba(147, 197, 253, 0.9);
+}
+
+a:focus-visible {
+    outline: 2px solid rgba(147, 197, 253, 0.9);
+    outline-offset: 2px;
+}
+
 /* Container */
 .container {
     max-width: var(--max-width);
@@ -715,10 +734,15 @@ img {
 
     .navbar {
         padding: calc(var(--spacing-unit) * 3) 0;
+        position: static;
+        top: auto;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .navbar.scrolled {
         padding: calc(var(--spacing-unit) * 2) 0;
+        position: static;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .nav-left,

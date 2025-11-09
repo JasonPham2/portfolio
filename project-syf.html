@@ -15,13 +15,27 @@
         body {
             background: #0a0e1a;
             color: #e2e8f0;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            scroll-padding-top: 90px;
+        }
+
+        nav,
+        section,
+        footer {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         .case-study-hero {
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 50%, #050a14 100%);
+            background-image: linear-gradient(135deg, rgba(5, 10, 20, 0.92) 0%, rgba(15, 15, 15, 0.88) 50%, rgba(5, 10, 20, 0.92) 100%), url('assets/images/syf/syf-hero-mockup.png');
+            background-size: cover, cover;
+            background-position: center, center;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem 6rem;
+            padding: 9rem 2rem 6rem;
+            margin-bottom: 4rem;
         }
 
         .case-study-hero::before {
@@ -42,6 +56,23 @@
             z-index: 1;
         }
 
+        .hero-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            align-items: flex-start;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
         .project-eyebrow {
             color: #60a5fa;
             text-transform: uppercase;
@@ -59,72 +90,134 @@
             text-shadow: 0 2px 30px rgba(59, 130, 246, 0.4);
         }
 
-        .project-subtitle {
-            font-size: 1.25rem;
+        .hero-lede {
+            font-size: 1.4rem;
             color: #cbd5e1;
-            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 640px;
+        }
+
+        .hero-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.75rem;
+            width: 100%;
+        }
+
+        .hero-metric {
+            padding: 1.75rem;
+            background: rgba(15, 23, 42, 0.68);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(59, 130, 246, 0.28);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.42);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .hero-metric:hover {
+            background: rgba(15, 23, 42, 0.92);
+            border-color: rgba(59, 130, 246, 0.55);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 44px rgba(59, 130, 246, 0.35);
+        }
+
+        .metric-icon {
+            font-size: 2rem;
+            line-height: 1;
+            color: #93c5fd;
+        }
+
+        .metric-label {
+            display: block;
+            color: #60a5fa;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .metric-value {
+            color: #ffffff;
+            font-size: 1.55rem;
+            font-weight: 600;
+        }
+
+        .metric-note {
+            color: #e2e8f0;
+            font-size: 0.98rem;
             line-height: 1.6;
         }
 
-        .project-meta-grid {
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-actions a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #ffffff;
+            font-weight: 600;
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-actions a:hover {
+            background: rgba(59, 130, 246, 0.35);
+            border-color: rgba(96, 165, 250, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: none;
+        }
+
+        .hero-meta-list {
+            list-style: none;
+            margin: 0;
+            padding: 1.75rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .meta-item {
-            padding: 1.5rem;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .meta-item:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .meta-item strong {
-            display: block;
-            color: #60a5fa;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .meta-item span {
-            color: #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .hero-image img {
-            width: 100%;
+            gap: 1.1rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.28);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(59, 130, 246, 0.3);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            margin-top: 3rem;
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
         }
 
-        .hero-image img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 100px rgba(59, 130, 246, 0.5);
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
         }
 
-        .hero-summary {
-            max-width: 900px;
-            margin: 3rem auto 0;
-            text-align: center;
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            line-height: 1.8;
+        .meta-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+        .meta-value {
+            color: #e2e8f0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hero-note {
+            font-size: 0.85rem;
+            color: rgba(203, 213, 225, 0.85);
+            margin-top: 0.5rem;
+            line-height: 1.5;
         }
 
         .section-intro-text {
@@ -153,6 +246,188 @@
             line-height: 1.7;
             text-align: left;
             margin-top: 0.5rem;
+        }
+
+        .snapshot-section {
+            position: relative;
+            padding: 5rem 2rem 5.5rem;
+            background: linear-gradient(180deg, #081020 0%, #0b1530 100%);
+            scroll-margin-top: 140px;
+            overflow: visible;
+        }
+
+        .snapshot-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .snapshot-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .snapshot-badge {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.18);
+            border: 1px solid rgba(59, 130, 246, 0.38);
+            color: #93c5fd;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .snapshot-heading h2 {
+            font-size: 1.9rem;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .snapshot-heading p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 760px;
+            line-height: 1.7;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .snapshot-card {
+            padding: 2.5rem;
+            background: rgba(15, 23, 42, 0.74);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+        }
+
+        .snapshot-card h3 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+        }
+
+        .snapshot-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .snapshot-card li {
+            color: #dce8f2;
+            font-size: 1rem;
+            line-height: 1.65;
+            position: relative;
+            padding-left: 1.85rem;
+        }
+
+        .snapshot-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0.6rem;
+            color: #8fd3ff;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .snapshot-points {
+            display: grid;
+            gap: 1.15rem;
+        }
+
+        .snapshot-point {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.25rem 1.35rem;
+            background: rgba(11, 34, 54, 0.7);
+            border: 1px solid rgba(96, 165, 250, 0.45);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(4, 15, 27, 0.5);
+        }
+
+        .snapshot-point-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.32), rgba(125, 211, 252, 0.12));
+            color: #e0f2fe;
+            font-size: 1.35rem;
+            border: 1px solid rgba(96, 165, 250, 0.55);
+        }
+
+        .snapshot-point-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .snapshot-point-content h4 {
+            margin: 0;
+            font-size: 1.08rem;
+            color: #f5fbff;
+        }
+
+        .snapshot-point-content p {
+            margin: 0;
+            color: #dce8f2;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        .step-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-size: 0.95rem;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .step-content strong {
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .step-content span {
+            color: #cbd5e1;
+            font-size: 0.96rem;
+            line-height: 1.7;
         }
 
         .visual-story-section {
@@ -462,15 +737,6 @@
 
         .journey-step:last-child {
             margin-bottom: 0;
-        }
-
-        .step-number {
-            font-size: 1rem;
-            color: #60a5fa;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
         }
 
         .step-title {
@@ -825,6 +1091,7 @@
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
             position: relative;
+            z-index: 2;
         }
 
         .nav-projects {
@@ -856,11 +1123,39 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                scroll-snap-type: none;
+            }
+            
+            .case-study-hero {
+                padding: 7rem 1.5rem 8rem;
+                margin-top: 5rem;
+                overflow: visible;
+                min-height: auto;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .snapshot-grid {
+                grid-template-columns: 1fr;
+            }
+
             .project-title {
                 font-size: 2rem;
             }
 
-            .project-subtitle {
+            .hero-lede {
                 font-size: 1rem;
             }
 
@@ -894,6 +1189,7 @@
 
             .hero-summary {
                 font-size: 1rem;
+                padding: 0 0.5rem;
             }
 
             .project-meta-grid {
@@ -902,6 +1198,123 @@
 
             .prototype-embed-wrapper {
                 padding-top: 120%;
+            }
+
+            .impact-comparison {
+                overflow-x: auto;
+            }
+
+            .comparison-table {
+                min-width: 640px;
+            }
+
+            .snapshot-point {
+                grid-template-columns: auto 1fr;
+            }
+
+            .snapshot-point-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+
+            .snapshot-point-content h4 {
+                font-size: 1rem;
+            }
+
+            .snapshot-point-content p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .snapshot-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .snapshot-step {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1.6rem;
+            background: rgba(8, 22, 36, 0.82);
+            border: 1px solid rgba(148, 197, 255, 0.45);
+            border-radius: 18px;
+            box-shadow: 0 14px 36px rgba(4, 14, 24, 0.48);
+            overflow: hidden;
+        }
+
+        .snapshot-step::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(14, 165, 233, 0.4));
+        }
+
+        .snapshot-step-icon {
+            align-self: flex-start;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.32), rgba(125, 211, 252, 0.14));
+            border: 1px solid rgba(96, 165, 250, 0.55);
+            color: #e0f2ff;
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snapshot-step-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snapshot-step-body h4 {
+            margin: 0;
+            font-size: 1.08rem;
+            color: #f5fbff;
+        }
+
+        .snapshot-step-body p {
+            margin: 0;
+            color: #cfe7ff;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        @media (max-width: 768px) {
+            .snapshot-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .snapshot-step {
+                padding: 1.4rem;
+            }
+
+            .snapshot-step-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .snapshot-step-body h4 {
+                font-size: 1.02rem;
+            }
+
+            .snapshot-step-body p {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -945,33 +1358,143 @@
 
     <!-- Hero Section -->
     <section class="case-study-hero">
-        <div class="hero-content">
-            <p class="project-eyebrow">🏔️ Co-operators Design Jam 2025 · 2 weeks</p>
-            <h1 class="project-title">Secure Your Future: Turning Life Milestones Into Confident Financial Journeys</h1>
-            <p class="project-subtitle">A goal-based planner that helps Canadians visualize their financial future and connect with Co-operators advisors through a milestone-first experience.</p>
-            <div class="project-meta-grid">
-                <div class="meta-item">
-                    <strong>Role</strong>
-                    <span>Lead UX Designer & Researcher</span>
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="project-eyebrow">🏔️ Co-operators Design Jam 2025 · 2 weeks</p>
+                <h1 class="project-title">Secure Your Future: milestone-first financial planning</h1>
+                <p class="hero-lede">I led a sprint to reimagine onboarding for Canadians planning life milestones. The result is a planner that speaks human-first, hands advisors rich context, and moves prospects from anxious to confident in minutes.</p>
+
+                <div class="hero-metrics-grid">
+                    <div class="hero-metric">
+                        <span class="metric-icon">🚀</span>
+                        <span class="metric-label">Outcome</span>
+                        <span class="metric-value">+65% qualified leads</span>
+                        <p class="metric-note">We traded stiff intake forms for an interactive milestone planner, so more people raised their hands ready to chat with an advisor.</p>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="metric-icon">✅</span>
+                        <span class="metric-label">Usability</span>
+                        <span class="metric-value">100% task success</span>
+                        <p class="metric-note">Maze sessions showed everyone could finish the flow without second guessing what came next. New grads and retirees both moved through with confidence.</p>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="metric-icon">🤝</span>
+                        <span class="metric-label">Adoption signal</span>
+                        <span class="metric-value">5 advisor teams</span>
+                        <p class="metric-note">They asked to pilot after seeing how the story, tone, and mapped goals teed them up for warmer conversations.</p>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <strong>Focus</strong>
-                    <span>Milestone-first financial planning</span>
+
+                <div class="hero-actions">
+                    <a href="https://www.figma.com/proto/u3BQavf3MBRNbzncgwzsph/UX-UI-Design-Jam-Group-3?node-id=179-1509&viewport=403%2C551%2C0.04&t=svmEi5LHozqqLpzx-0&scaling=contain&content-scaling=fixed&starting-point-node-id=179%3A1509" target="_blank" rel="noopener">View clickable prototype ↗</a>
+                    <a href="#snapshot">Jump to snapshot ↓</a>
                 </div>
-                <div class="meta-item">
-                    <strong>Duration</strong>
-                    <span>2 weeks</span>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-visual-frame">
+                    <img src="assets/images/syf/syf-hero-mockup.png" alt="Secure Your Future milestone planner mockups">
                 </div>
-                <div class="meta-item">
-                    <strong>Tools</strong>
-                    <span>Figma · FigJam · Maze</span>
+                <ul class="hero-meta-list">
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Lead UX designer and researcher</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Team</span>
+                        <span class="meta-value">5 designers collaborating with Co-operators SMEs</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Contributions</span>
+                        <span class="meta-value">Research synthesis, opportunity framing, service blueprint, interaction design, usability facilitation</span>
+                    </li>
+                    <li class="hero-meta-item">
+                        <span class="meta-label">Tools</span>
+                        <span class="meta-value">Figma, FigJam, Maze, Miro</span>
+                    </li>
+                </ul>
+                <p class="hero-note">Built in two weeks during Co-operators Design Jam 2025.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Snapshot -->
+    <section class="snapshot-section" id="snapshot">
+        <div class="snapshot-inner">
+            <div class="snapshot-heading">
+                <span class="snapshot-badge">Quick read</span>
+                <h2>Milestone-first Overview</h2>
+                <p>The problem sounded simple: help Canadians plan with confidence. The work required reframing financial planning around life moments, then proving the experience earned trust for both customers and advisors.</p>
+            </div>
+            <div class="snapshot-grid">
+                <div class="snapshot-card">
+                    <h3>✨ What mattered most</h3>
+                    <div class="snapshot-points">
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">👥</span>
+                            <div class="snapshot-point-content">
+                                <h4>Who we served</h4>
+                                <p>Canadians juggling first homes, growing families, and retirement pivots without wanting a finance degree.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">😰</span>
+                            <div class="snapshot-point-content">
+                                <h4>The friction</h4>
+                                <p>Product-first portals overwhelmed people before they could picture the life they were planning for.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">🛠️</span>
+                            <div class="snapshot-point-content">
+                                <h4>What we built</h4>
+                                <p>A milestone-first planner that speaks plainly, visualizes timelines, and hands advisors context they can act on.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-point">
+                            <span class="snapshot-point-icon">📈</span>
+                            <div class="snapshot-point-content">
+                                <h4>Why it stuck</h4>
+                                <p>Qualified leads jumped 65%, advisors asked to pilot, and the judges called out the human tone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snapshot-card">
+                    <h3>🧭 Process in brief</h3>
+                    <div class="snapshot-steps">
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">1</span>
+                            <div class="snapshot-step-body">
+                                <h4>Align on reality</h4>
+                                <p>Talked with Canadians and advisors, mapped the existing maze, and surfaced real-life friction points.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">2</span>
+                            <div class="snapshot-step-body">
+                                <h4>Anchor on milestones</h4>
+                                <p>Reframed the first question to "What life moment is next?" and storyboarded flows around that energy.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">3</span>
+                            <div class="snapshot-step-body">
+                                <h4>Prototype the arc</h4>
+                                <p>Built five screen loops that move from milestone pick to advisor-ready summaries in a few confident clicks.</p>
+                            </div>
+                        </div>
+                        <div class="snapshot-step">
+                            <span class="snapshot-step-icon">4</span>
+                            <div class="snapshot-step-body">
+                                <h4>Validate tone and flow</h4>
+                                <p>Moderated Maze tests to make sure clarity, warmth, and handoff data all landed the way we promised.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="assets/images/syf/syf-hero-mockup.png" alt="High-fidelity Secure Your Future screens">
-        </div>
-        <p class="hero-summary">Most Canadians feel overwhelmed by financial planning. Secure Your Future reframes the process around life milestones so people can picture their future before we dive into products. I guided the concept-to-prototype journey, pulling together research, experience mapping, and interaction design.</p>
     </section>
 
     <!-- Overview -->
@@ -982,13 +1505,13 @@
         </div>
         
         <div class="split-visual-layout">
+            <div class="split-image">
+                <img src="assets/images/syf/syf-solution-flow.png" alt="Solution flow showing the timeline-based planning approach">
+            </div>
             <div class="split-text">
                 <h3>The Story</h3>
                 <p>Most Canadians feel overwhelmed by financial planning. Secure Your Future reframes the process around life moments so folks can imagine a future version of themselves before we talk numbers.</p>
                 <p>I led the concept-to-prototype journey, stitching together research synthesis, experience mapping, and interaction design to build a planner that earns trust before it asks for details.</p>
-            </div>
-            <div class="split-image">
-                <img src="assets/images/syf/syf-solution-flow.png" alt="Solution flow showing the timeline-based planning approach">
             </div>
         </div>
 
@@ -1021,13 +1544,13 @@
         </div>
 
         <div class="split-visual-layout">
+            <div class="split-image">
+                <img src="assets/images/syf/syf-problem-stats.png" alt="Research showing Canadians are confused and under-prepared">
+            </div>
             <div class="split-text">
                 <h3>The Challenge</h3>
                 <p>Users weren't inspired by insurance quotes; they were intimidated. Long forms, dense terminology, and product-first flows eroded trust before value appeared.</p>
                 <p>People don't wake up thinking "I need insurance." They think about buying a home, starting a family, or retiring comfortably. But traditional financial planning forced them to speak a foreign language first.</p>
-            </div>
-            <div class="split-image">
-                <img src="assets/images/syf/syf-problem-stats.png" alt="Research showing Canadians are confused and under-prepared">
             </div>
         </div>
 
@@ -1062,7 +1585,7 @@
         </div>
 
         <div class="cooperators-mission">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Co-operators_logo.svg" alt="Co-operators logo">
+            <img src="assets/images/syf/cooperators-logo.png" alt="Co-operators logo">
             <blockquote>"We help Canadians build financial strength through personalized advice."</blockquote>
         </div>
 
@@ -1122,13 +1645,13 @@
         </div>
 
         <div class="split-visual-layout" style="margin-bottom: 4rem;">
+            <div class="split-image">
+                <img src="assets/images/syf/syf-approach-comparison.png" alt="Comparison showing traditional insurance vs life goals first approach">
+            </div>
             <div class="split-text">
                 <h3>The Shift</h3>
                 <p>We reframed the intake question to unlock trust: <strong>"What life milestone matters most right now?"</strong></p>
                 <p>By starting with goals instead of products, we created a human-first experience that feels less like paperwork and more like planning a meaningful future.</p>
-            </div>
-            <div class="split-image">
-                <img src="assets/images/syf/syf-approach-comparison.png" alt="Comparison showing traditional insurance vs life goals first approach">
             </div>
         </div>
 
@@ -1414,60 +1937,79 @@
                 rootMargin: '0px 0px -100px 0px'
             };
 
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        requestAnimationFrame(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            entry.target.classList.add('animated');
-                        });
-                        fadeInObserver.unobserve(entry.target);
-                    }
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
+
+            if (enableAnimations) {
+                const fadeInObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                            requestAnimationFrame(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                entry.target.classList.add('animated');
+                            });
+                            fadeInObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe fade-in elements with optimized stagger
+                const fadeElements = document.querySelectorAll('.pain-card, .insight-card, .persona-visual, .user-quote');
+                fadeElements.forEach((element, index) => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+                    element.style.willChange = 'opacity, transform';
+                    fadeInObserver.observe(element);
                 });
-            }, observerOptions);
 
-            // Observe fade-in elements with optimized stagger
-            const fadeElements = document.querySelectorAll('.pain-card, .insight-card, .persona-visual, .user-quote');
-            fadeElements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                element.style.willChange = 'opacity, transform';
-                fadeInObserver.observe(element);
-            });
+                // Journey steps animation
+                const journeyObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.2 });
 
-            // Journey steps animation
-            const journeyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-                        entry.target.classList.add('visible');
-                    }
+                document.querySelectorAll('.journey-step').forEach(step => {
+                    journeyObserver.observe(step);
                 });
-            }, { threshold: 0.2 });
 
-            document.querySelectorAll('.journey-step').forEach(step => {
-                journeyObserver.observe(step);
-            });
+                // Metric bars animation
+                const metricObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                            const bar = entry.target;
+                            const targetWidth = bar.style.width;
+                            bar.style.width = '0%';
+                            setTimeout(() => {
+                                bar.style.width = targetWidth;
+                                bar.classList.add('animated');
+                            }, 100);
+                        }
+                    });
+                }, { threshold: 0.5 });
 
-            // Metric bars animation
-            const metricObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        const bar = entry.target;
-                        const targetWidth = bar.style.width;
-                        bar.style.width = '0%';
-                        setTimeout(() => {
-                            bar.style.width = targetWidth;
-                            bar.classList.add('animated');
-                        }, 100);
-                    }
+                document.querySelectorAll('.metric-bar-progress').forEach(bar => {
+                    metricObserver.observe(bar);
                 });
-            }, { threshold: 0.5 });
+            } else {
+                document.querySelectorAll('.pain-card, .insight-card, .persona-visual, .user-quote').forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'none';
+                });
 
-            document.querySelectorAll('.metric-bar-progress').forEach(bar => {
-                metricObserver.observe(bar);
-            });
+                document.querySelectorAll('.journey-step').forEach(step => {
+                    step.classList.add('visible');
+                });
+
+                document.querySelectorAll('.metric-bar-progress').forEach(bar => {
+                    bar.classList.add('animated');
+                });
+            }
 
             // Enhanced hover effects for navigation links
             const navLinks = document.querySelectorAll('.nav-projects a');
@@ -1484,45 +2026,33 @@
                 });
             });
 
-            // Back to top on logo click
-            const logo = document.querySelector('.nav-logo');
-            if (logo) {
-                logo.addEventListener('click', (e) => {
-                    if (window.location.pathname.includes('syf')) {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        setTimeout(() => {
-                            window.location.href = 'index.html';
-                        }, 300);
-                    }
-                });
-            }
-
             // Optimized parallax effect on hero section
             let ticking = false;
             let lastScroll = 0;
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
-                    window.requestAnimationFrame(() => {
-                        const hero = document.querySelector('.case-study-hero');
-                        const heroMockup = document.querySelector('.hero-mockup-large');
-                        
-                        if (hero && scrolled < window.innerHeight) {
-                            hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.3;
-                        }
+            if (!isSmallScreen && !prefersReducedMotion) {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
+                        window.requestAnimationFrame(() => {
+                            const hero = document.querySelector('.case-study-hero');
+                            const heroMockup = document.querySelector('.hero-mockup-large');
+                            
+                            if (hero && scrolled < window.innerHeight) {
+                                hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.3;
+                            }
 
-                        if (heroMockup && scrolled < window.innerHeight) {
-                            heroMockup.style.transform = `translate3d(0, ${scrolled * 0.2}px, 0)`;
-                        }
+                            if (heroMockup && scrolled < window.innerHeight) {
+                                heroMockup.style.transform = `translate3d(0, ${scrolled * 0.2}px, 0)`;
+                            }
 
-                        lastScroll = scrolled;
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }, { passive: true });
+                            lastScroll = scrolled;
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+            }
 
             // Add click to expand for mockup images
             document.querySelectorAll('.step-visual, .split-image img, .hero-mockup-large').forEach(img => {
