@@ -583,6 +583,28 @@
             margin-bottom: 0.4rem;
         }
 
+        .research-block ul {
+            list-style: none;
+            padding: 0;
+            margin: calc(var(--spacing-unit)) 0;
+        }
+
+        .research-block ul li {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .research-block ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #5eead4;
+            font-weight: bold;
+        }
+
         .research-stat {
             display: block;
             color: #5eead4;
@@ -1402,7 +1424,7 @@
                     <div class="challenge-label">Impact</div>
                     <div class="challenge-content">
                         <h3>Bottlenecks and inefficiency for everyone</h3>
-                        <p>Manual data entry adds an average of 127 seconds per patient. Inconsistent symptom recording leads to triage variability. Patients perceive longer waits when they lack information, while staff operate reactively without visibility into incoming volume.</p>
+                        <p>Manual data entry adds an average of 127 seconds per patient. Inconsistent symptom recording leads to triage variability, while interruptions from other patients and urgent situations pull nurses away mid-intake. Communication barriers like language differences slow the process, and staff juggle multiple systems while carrying the emotional weight of patients in distress. Patients perceive longer waits when they lack visibility into their queue position or wait times, while staff operate reactively without predictive tools to anticipate volume.</p>
                     </div>
                 </div>
                 <div class="challenge-card">
@@ -1424,13 +1446,25 @@
                 <div class="research-block">
                     <span class="research-icon">🗂️</span>
                     <h3>Manual Triage Variability</h3>
-                    <p>Through service blueprint mapping and secondary research, we discovered that manual symptom recording leads to inconsistent prioritization between staff members. Different nurses might record the same complaint differently, making it harder to compare cases or predict resource needs.</p>
+                    <ul>
+                        <li>Manual symptom recording leads to inconsistent prioritization between staff members</li>
+                        <li>Nurses get pulled away by interruptions from other patients, phone calls, or urgent situations</li>
+                        <li>Communication barriers like language differences or patients struggling to articulate symptoms under stress slow things down</li>
+                        <li>Staff have to juggle multiple systems, re-enter data, and clarify confusing responses</li>
+                        <li>All while carrying the emotional weight of patients in distress</li>
+                    </ul>
                     <span class="research-stat">Manual data entry added ~127 seconds per patient interaction</span>
                 </div>
                 <div class="research-block">
                     <span class="research-icon">⏱️</span>
                     <h3>Reactive Resource Allocation</h3>
-                    <p>Emergency departments operate without predictive tools, so staff respond to the moment rather than anticipating volume. Communication gaps between waiting areas and triage desks make patients feel ignored, even when staff are moving as fast as possible.</p>
+                    <ul>
+                        <li>Emergency departments operate without predictive tools, so staff respond to the moment rather than anticipating volume</li>
+                        <li>Communication gaps between waiting areas and triage desks make patients feel ignored, even when staff are moving as fast as possible</li>
+                        <li>Staff can't see incoming patient volume or acuity levels ahead of time, making it hard to prepare for busy periods</li>
+                        <li>Resources get allocated reactively when problems arise rather than proactively based on patterns or forecasts</li>
+                        <li>Patients have no visibility into their queue position or estimated wait times, increasing anxiety and frustration</li>
+                    </ul>
                     <span class="research-stat">Perceived wait stress increased when patients lacked visibility</span>
                 </div>
             </div>
@@ -1516,17 +1550,17 @@
                 <div class="feature-block">
                     <span class="feature-block-icon">🌐</span>
                     <h3>Language Selection</h3>
-                    <p>First screen offers English, Français, and additional language options to ensure accessibility for diverse patient populations from the very first interaction.</p>
+                    <p>First screen offers English, Français, and additional language options to break down communication barriers that slow intake, ensuring diverse patient populations can communicate symptoms clearly from the very first interaction.</p>
                 </div>
                 <div class="feature-block">
                     <span class="feature-block-icon">💳</span>
                     <h3>Health Card Integration</h3>
-                    <p>Quick card scan pulls patient info automatically, with manual entry available for visitors or anyone without cards, keeping the flow fast without creating barriers.</p>
+                    <p>Quick card scan pulls patient info automatically, reducing manual data entry and allowing nurses to focus on care instead of being pulled away by intake interruptions. Manual entry remains available for visitors or anyone without cards.</p>
                 </div>
                 <div class="feature-block">
                     <span class="feature-block-icon">🎯</span>
                     <h3>Symptom & Pain Input</h3>
-                    <p>Icon-based symptom grid paired with a simple pain slider makes complex medical communication accessible, with help buttons and nurse override at every step.</p>
+                    <p>Icon-based symptom grid paired with a simple pain slider makes complex medical communication accessible, reducing language barriers and ensuring standardized data collection that eliminates inconsistent prioritization between staff members.</p>
                 </div>
                 <div class="feature-block">
                     <span class="feature-block-icon">🚨</span>
@@ -1536,7 +1570,7 @@
                 <div class="feature-block">
                     <span class="feature-block-icon">📱</span>
                     <h3>Dynamic Queue Tracking</h3>
-                    <p>QR code on the printed ticket links to live queue updates instead of static estimated times, giving patients real transparency and reducing perceived wait stress.</p>
+                    <p>QR code on the printed ticket links to live queue updates instead of static estimated times, giving patients visibility into their queue position and wait times, reducing anxiety and closing communication gaps between waiting areas and triage desks.</p>
                 </div>
                 <div class="feature-block">
                     <span class="feature-block-icon">✓</span>
@@ -1619,7 +1653,7 @@
                     <span class="result-icon">⚡</span>
                     <span class="result-value">20-25%</span>
                     <div class="result-label">Faster Intake</div>
-                    <p class="result-detail">Estimated reduction in intake time through automated data collection and reduced manual entry</p>
+                    <p class="result-detail">Estimated reduction in intake time through automated data collection and reduced manual entry, freeing nurses from intake interruptions to focus on patient care</p>
                 </div>
                 <div class="result-card">
                     <span class="result-icon">✓</span>
@@ -1636,8 +1670,8 @@
                 <div class="result-card">
                     <span class="result-icon">💚</span>
                     <span class="result-value">Improved</span>
-                    <div class="result-label">Patient Comfort</div>
-                    <p class="result-detail">Neutral language replaced judgmental priority tiers, reducing perceived stigma</p>
+                    <div class="result-label">Patient Comfort & Communication</div>
+                    <p class="result-detail">Neutral language replaced judgmental priority tiers, while queue tracking and transparent wait times closed communication gaps and reduced anxiety</p>
                 </div>
             </div>
 
