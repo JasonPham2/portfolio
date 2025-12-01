@@ -53,7 +53,7 @@ function initCircularProgressNav() {
                 id: sectionId, 
                 element: section, 
                 link: link,
-                index: index + 1,
+                index: index,
                 label: label ? label.textContent : sectionId
             });
         }
